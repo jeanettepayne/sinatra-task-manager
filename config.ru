@@ -6,4 +6,6 @@ end
 
 use Rack::MethodOverride
 run ApplicationController
-# use [othercontrollers]
+use EmployeeController
+use ManagerController
+use TaskController
