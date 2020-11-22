@@ -7,6 +7,7 @@ if ActiveRecord::Base.connection.migration_context.needs_migration?
 end
 
 use Rack::MethodOverride
+
 run ApplicationController
 use EmployeeController
 use ManagerController

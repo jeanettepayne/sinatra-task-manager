@@ -1,11 +1,13 @@
 require 'bundler/setup'
 Bundler.require
+require 'sinatra'
+require 'sinatra/activerecord'
 
-# ENV['SINATRA_ENV'] ||= "development"
+ENV['SINATRA_ENV'] ||= "development"
 
-configure :development do
-    set :database, 'sqlite3:db/taskmanager.db'
-end
+
+set :database, 'sqlite3:db/taskmanager.sqlite'
+
 
 # ActiveRecord::Base.establish_connection(
 #   :adapter => "sqlite3",
