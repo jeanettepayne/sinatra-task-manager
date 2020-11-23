@@ -40,9 +40,22 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/:slug' do
-        @manager = Manager.find_by_slug(params[:slug])
+        if logged_in?
+            @manager = Manager.find_by_slug(params[:slug])
         # binding.pry
-        erb :'managers/show_manager'
+            erb :'managers/show_manager'
+        else
+            redirect '/managers/login'
+        end
+    end
+
+    get '/managers/logout' do
+        if logged_in?
+            session.destroy
+            redirect '/managers/login'
+        else
+            redirect '/'
+        end
     end
 
     helpers do
