@@ -11,7 +11,7 @@
         <br>
         <ul>
         <% @employees.each do |employee| %>
-            <li><a href="/employees/<%= employee.id %>"><%= employee.name %></a></li><br>
+            <li><a href="/employees/<%= employee.slug %>"><%= employee.name %></a></li><br>
         <% end %>
         </ul>
 
