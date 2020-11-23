@@ -2,9 +2,13 @@ class ManagerController < ApplicationController
 
 
     get '/managers' do
-        @managers = Manager.all
+        if logged_in?
+            @managers = Manager.all
 
-        erb :'managers/managers'
+            erb :'managers/managers'
+        else
+            redirect '/managers/login'
+        end
     end
 
     get '/managers/signup' do
@@ -26,13 +30,31 @@ class ManagerController < ApplicationController
     end
 
     post '/managers/login' do
-        
+        @manager = Manager.find_by(email: params["manager"]["email"])
+        if @manager && @manager.authenticate(params["manager"]["password"])
+            session[:manager_id] = @manager.id
+            redirect '/managers'
+        else
+            redirect '/managers/login'
+        end
     end
 
     get '/managers/:slug' do
         @manager = Manager.find_by_slug(params[:slug])
         # binding.pry
         erb :'managers/show_manager'
+    end
+
+    helpers do
+
+        def logged_in?
+            !!current_user
+        end
+
+        def current_user
+            @current_user ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
+        end
+
     end
 
 end

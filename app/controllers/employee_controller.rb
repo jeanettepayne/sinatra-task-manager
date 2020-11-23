@@ -25,5 +25,17 @@ class EmployeeController < ApplicationController
         erb :'employees/show_employee'
     end
 
+    helpers do
+
+        def logged_in?
+            !!current_user
+        end
+
+        def current_user
+            @current_user ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
+        end
+
+    end
+
 
 end
