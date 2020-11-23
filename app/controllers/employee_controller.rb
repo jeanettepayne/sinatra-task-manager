@@ -19,6 +19,20 @@ class EmployeeController < ApplicationController
     
     end
 
+    get '/employees/login' do
+        erb :'employees/login'
+    end
+
+    post '/employees/login' do
+        @employee = Employee.find_by(email: params["employee"]["email"])
+        if @employee && @employee.authenticate(params["employee"]["password"])
+            session[:employee_id] = @employee.id
+            redirect '/employees'
+        else
+            redirect '/employees/login'
+        end
+    end
+
     get '/employees/logout' do
         if logged_in?
             session.destroy
