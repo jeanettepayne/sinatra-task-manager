@@ -1,3 +1,3 @@
 class TaskController < ApplicationController
-    
+
 end
