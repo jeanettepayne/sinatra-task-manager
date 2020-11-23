@@ -6,7 +6,13 @@
     </head>
 
     <body>
-    
+        <h1>Managers:</h1>
+        <br>
+        <ul>
+        <% @managers.each do |manager| %>
+            <li><a href="/managers/<%= manager.slug %>"><%= manager.name %></a></li><br>
+        <% end %>
+        </ul>
     </body>
 
 </html>
