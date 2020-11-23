@@ -2,7 +2,7 @@ class EmployeeController < ApplicationController
 
     get '/employees' do
         @employees = Employee.all
-
+        
         erb :'employees/employees'
     end
 
@@ -11,7 +11,7 @@ class EmployeeController < ApplicationController
     end
 
     post '/employees' do
-
+        
     end
 
     get '/employees/:slug' do
