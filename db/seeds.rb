@@ -81,4 +81,29 @@ task53 = Task.create(name: "Create Sales Target List", due_date: "02-03", priori
 task54 = Task.create(name: "Analyze Annual Sales Report", due_date: "01-20", priority: "Low", employee: robert)
 task55 = Task.create(name: "Create Sales Client Satisfaction Survey", due_date: "02-15", priority: "Low", employee: tim)
 
+stephanie.save
+emerson.save
+lanie.save
+randall.save
+amy.save
+tommy.save
+tony.save
 
+hannah.save
+john.save
+william.save
+courtney.save
+andrew.save
+kester.save
+bethany.save
+charlie.save
+marie.save
+christopher.save
+lillian.save
+emory.save
+kristin.save
+moe.save
+davi.save
+bert.save
+robert.save
+tim.save
