@@ -8,7 +8,7 @@
     <body>
         <h1>Create New Employee Profile</h1>
 
-        <form action="/employees" method="POST">
+        <form action="/employees/signup" method="POST">
             <label>Name: </label>
             <input type="text" name="employee[name]" placeholder="Enter First and Last Name" required>
             <br>
@@ -25,9 +25,9 @@
             </select>
             <br>
             <label>Manager: </label>
-            <select name="employee[manager">
+            <select name="employee[manager]">
                 <% Manager.all.each do |manager| %>
-                    <option value="<%= manager.slug %>"><%= manager.name %></option>
+                    <option value="<%= manager.id %>"><%= manager.name %></option>
                 <% end %>
             </select>
             <br>
