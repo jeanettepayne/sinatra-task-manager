@@ -10,13 +10,13 @@
 
         <form action="/employees/signup" method="POST">
             <label>Name: </label>
-            <input type="text" name="name" placeholder="Enter First and Last Name" required>
+            <input type="text" name="employee[name]" id="employee_name" placeholder="Enter First and Last Name" required>
             <br>
             <label>Department: </label>
             <!-- potentiall abstract later -->
-            <select name="department">
+            <select name="employee[department]" id="employee_department">
                 <option value="accounting">Accounting</option>
-                <option value="hr">Human Resources</option>
+                <option value="human resources">Human Resources</option>
                 <option value="administration">Administration</option>
                 <option value="research">Research</option>
                 <option value="marketing">Marketing</option>
@@ -25,20 +25,21 @@
             </select>
             <br>
             <label>Manager: </label>
-            <select name="manager">
+            <!-- FIX THIS  -->
+            <select name="employee[manager]" id="employee_manager">
                 <% Manager.all.each do |manager| %>
-                    <option value="<%= manager %>"><%= manager.name %></option>
+                    <option value="<%= manager %>" name=><%= manager.name %></option>
                 <% end %>
             </select>
             <br>
             <label>Title: </label>
-            <input type="text" name="title" placeholder="Enter Job Title" required>
+            <input type="text" name="employee[title]" id="employee_title" placeholder="Enter Job Title" required>
             <br>
             <label>Email: </label>
-            <input type="email" name="email" placeholder="Enter Email Address" required>
+            <input type="email" name="employee[email]" id="employee_email" placeholder="Enter Email Address" required>
             <br>
             <label>Password: </label>
-            <input type="password" name="password" placeholder="Create Your Password" required>
+            <input type="password" name="employee[password]" id="employee_password" placeholder="Create Your Password" required>
             <br>
             <input type="submit" value="Submit">
 
