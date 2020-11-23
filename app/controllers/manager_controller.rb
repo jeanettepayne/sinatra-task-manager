@@ -21,6 +21,14 @@ class ManagerController < ApplicationController
         # binding.pry
     end
 
+    get '/managers/login' do
+        erb :'managers/login'
+    end
+
+    post '/managers/login' do
+        
+    end
+
     get '/managers/:slug' do
         @manager = Manager.find_by_slug(params[:slug])
         # binding.pry
