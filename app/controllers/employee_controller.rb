@@ -7,11 +7,11 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/signup' do
-        erb :'employees/create_employees'
+        erb :'employees/create_employee'
     end
 
     post '/employees' do
-        
+
     end
 
     get '/employees/:slug' do
