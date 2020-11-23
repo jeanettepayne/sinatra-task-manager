@@ -6,7 +6,14 @@
     </head>
 
     <body>
-    
+        <ul>
+        <% @employee.tasks.each do |task| %>
+            <li><b><%= task.name %></b><br>
+                Due Date: <%= task.due_date %><br>
+                Priority: <%= task.priority %></li><br>
+            
+        <% end %>
+        </ul>
     </body>
 
 </html>

@@ -42,6 +42,13 @@ class EmployeeController < ApplicationController
     #     end
     # end
 
+    
+    # get '/employeees/:slug/tasks' do
+    #     @employee = Employee.find_by_slug(slug)
+
+    #     erb :'tasks_views/show_tasks'
+    # end
+
     get '/employees/:slug' do
         @employee = Employee.find_by_slug(params[:slug])
 
