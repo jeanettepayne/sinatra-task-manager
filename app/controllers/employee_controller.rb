@@ -12,8 +12,8 @@ class EmployeeController < ApplicationController
 
     post '/employees/signup' do
         # NEED TO ADD MANAGER BACK IN TO EMPLOYEE BELOW
-        @new_employee = Employee.create(name: params["employee"]["name"], department: params["employee"]["department"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
-        # @new_employee = Employee.new(params["employee"])
+        # @new_employee = Employee.create(name: params["employee"]["name"], department: params["employee"]["department"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
+        @new_employee = Employee.new(params["employee"])
         # binding.pry
         @new_employee.save
     

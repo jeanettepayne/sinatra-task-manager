@@ -22,15 +22,12 @@
                 <input type="radio" name="employee[department]" value="Marketing">Marketing<br>
                 <input type="radio" name="employee[department]" value="Production">Production<br>
                 <input type="radio" name="employee[department]" value="Sales">Sales<br>
-            </select>
             <br>
             <!-- FIX THIS -->
-            <label>Manager: </label>
             <br>
                 <% Manager.all.each do |manager| %>
-                    <input type="radio" name="employee[manager]" value=<%= manager.name %>><%= manager.name %><br>
+                    <input type="radio" name="employee[manager]" id=<%= manager %>><%= manager.name %><br>
                 <% end %>
-            </select>
             <br>
             <label>Title: </label>
             <input type="text" name="employee[title]" id="employee_title" placeholder="Enter Job Title" required>
