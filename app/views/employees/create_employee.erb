@@ -13,22 +13,22 @@
             <input type="text" name="employee[name]" id="employee_name" placeholder="Enter First and Last Name" required>
             <br>
             <label>Department: </label>
-            <!-- potentiall abstract later -->
-            <select name="employee[department]" id="employee_department">
-                <option value="accounting">Accounting</option>
-                <option value="human resources">Human Resources</option>
-                <option value="administration">Administration</option>
-                <option value="research">Research</option>
-                <option value="marketing">Marketing</option>
-                <option value="production">Production</option>
-                <option value="sales">Sales</option>
+            <br>
+            <!-- potentially abstract later -->
+                <input type="radio" name="employee[department]" value="Accounting">Accounting<br>
+                <input type="radio" name="employee[department]" value="Human Resources">Human Resources<br>
+                <input type="radio" name="employee[department]" value="Administration">Administration<br>
+                <input type="radio" name="employee[department]" value="Research">Research<br>
+                <input type="radio" name="employee[department]" value="Marketing">Marketing<br>
+                <input type="radio" name="employee[department]" value="Production">Production<br>
+                <input type="radio" name="employee[department]" value="Sales">Sales<br>
             </select>
             <br>
+            <!-- FIX THIS -->
             <label>Manager: </label>
-            <!-- FIX THIS  -->
-            <select name="employee[manager]" id="employee_manager">
+            <br>
                 <% Manager.all.each do |manager| %>
-                    <option value="<%= manager %>" name=><%= manager.name %></option>
+                    <input type="radio" name="employee[manager]" value=<%= manager.name %>><%= manager.name %><br>
                 <% end %>
             </select>
             <br>
