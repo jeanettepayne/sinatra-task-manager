@@ -39,6 +39,15 @@ class ManagerController < ApplicationController
         end
     end
 
+    get '/managers/logout' do
+        if logged_in?
+            session.destroy
+            redirect '/managers/login'
+        # else
+        #     redirect '/'
+        end
+    end
+
     get '/managers/:slug' do
         if logged_in?
             @manager = Manager.find_by_slug(params[:slug])
@@ -49,14 +58,6 @@ class ManagerController < ApplicationController
         end
     end
 
-    get '/managers/logout' do
-        if logged_in?
-            session.destroy
-            redirect '/managers/login'
-        else
-            redirect '/'
-        end
-    end
 
     helpers do
 
