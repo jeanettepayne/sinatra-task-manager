@@ -12,7 +12,7 @@ class EmployeeController < ApplicationController
 
     post '/employees/signup' do
         # raise params
-        @new_employee = Employee.new(name: params["employee"]["name"], department: params["employee"]["department"], manager: params["employee"]["manager"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
+        @new_employee = Employee.create(name: params["employee"]["name"], department: params["employee"]["department"], manager: params["employee"]["manager"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
         # @new_employee = Employee.new(name: params["name"])
         binding.pry
         @new_employee.save

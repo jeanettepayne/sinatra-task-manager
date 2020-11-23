@@ -6,7 +6,35 @@
     </head>
 
     <body>
-    
+        <h1>Create New Manager Profile</h1>
+
+        <form action="/managers/signup" method="POST">
+            <label>Name: </label>
+            <input type="text" name="manager[name]" id="manager_name" placeholder="Enter First and Last Name" required>
+            <br>
+            <label>Department: </label>
+            <!-- potentially abstract later -->
+            <select name="manager[department]" id="manager_department">
+                <option value="accounting">Accounting</option>
+                <option value="human resources">Human Resources</option>
+                <option value="administration">Administration</option>
+                <option value="research">Research</option>
+                <option value="marketing">Marketing</option>
+                <option value="production">Production</option>
+                <option value="sales">Sales</option>
+            </select>
+            <br>
+            <label>Title: </label>
+            <input type="text" name="manager[title]" id="manager_title" placeholder="Enter Job Title" required>
+            <br>
+            <label>Email: </label>
+            <input type="email" name="manager[email]" id="manager_email" placeholder="Enter Email Address" required>
+            <br>
+            <label>Password: </label>
+            <input type="password" name="manager[password]" id="manager_password" placeholder="Create Your Password" required>
+            <br>
+            <input type="submit" value="Submit">
+
     </body>
 
 </html>
