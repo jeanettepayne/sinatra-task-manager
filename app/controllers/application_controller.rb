@@ -10,6 +10,13 @@ class ApplicationController < Sinatra::Base
         set :session_secret, "password_security"
     end
 
+    get '/logout' do
+        if logged_in?
+            session.destroy
+            redirect '/'
+        end
+    end
+
     # helpers do
 
     #     def logged_in?
