@@ -11,7 +11,7 @@ class EmployeeController < ApplicationController
     end
 
     post '/employees' do
-        
+        # binding.pry
     end
 
     get '/employees/:slug' do

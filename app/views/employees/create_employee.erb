@@ -24,6 +24,13 @@
                 <option value="sales">Sales</option>
             </select>
             <br>
+            <label>Manager: </label>
+            <select name="employee[manager">
+                <% Manager.all.each do |manager| %>
+                    <option value="<%= manager.slug %>"><%= manager.name %></option>
+                <% end %>
+            </select>
+            <br>
             <label>Title: </label>
             <input type="text" name="employee[title]" placeholder="Enter Job Title" required>
             <br>
