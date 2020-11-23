@@ -1,1 +1,7 @@
 This page will show a list of all employees with links to their individual info pages.
+
+<ul>
+<% @employees.each do |employee| %>
+    <li><%= employee.name %></li><br>
+<% end %>
+</ul>
