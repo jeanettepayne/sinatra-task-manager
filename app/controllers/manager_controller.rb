@@ -13,7 +13,11 @@ class ManagerController < ApplicationController
 
     post '/managers/signup' do
         @manager = Manager.new(params["manager"])
-        @manager.save
+        if @manager.save
+            redirect "/managers/#{@manager.slug}"
+        else
+            redirect '/managers/signup'
+        end
         # binding.pry
     end
 
