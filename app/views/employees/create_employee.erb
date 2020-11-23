@@ -6,7 +6,28 @@
     </head>
 
     <body>
-    
+        <h1>Create New Employee Profile</h1>
+
+        <form action="/employees" method="POST">
+            <label>Name: </label>
+            <input type="text" name="employee[name]" placeholder="Enter First and Last Name" required>
+            <br>
+            <label>Department: </label>
+            <!-- drop down or radio -->
+            <br>
+            <label>Title: </label>
+            <input type="text" name="employee[title]" placeholder="Enter Job Title" required>
+            <br>
+            <label>Email: </label>
+            <input type="email" name="employee[email]" placeholder="Enter Email Address" required>
+            <br>
+            <label>Password: </label>
+            <input type="password" name="employee[password]" placeholder="Create Your Password" required>
+            <br>
+            <input type="submit" value="Submit">
+
+        
+        </form>
     </body>
 
 </html>
