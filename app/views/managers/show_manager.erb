@@ -10,6 +10,13 @@
         <h3>Title: <%= @manager.title %></h3>
         <h4>Department: <%= @manager.department %></h4>
         <p>Email Address: <%= @manager.email %></p>
+        <br>
+        <h4>Employees:</h4>
+            <ul>
+                <% @manager.employees.each do |employee|%>
+                    <li><a href="/employees/<%= employee.slug %>"><%= employee.name %></a></li>
+                <% end %>
+            </ul>
     </body>
 
 </html>

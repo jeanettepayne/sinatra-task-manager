@@ -9,7 +9,7 @@ class ManagerController < ApplicationController
 
     get '/managers/:slug' do
         @manager = Manager.find_by_slug(params[:slug])
-
+        # binding.pry
         erb :'managers/show_manager'
     end
 
