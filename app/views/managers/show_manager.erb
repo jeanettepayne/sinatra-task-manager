@@ -11,12 +11,15 @@
         <h4>Department: <%= @manager.department %></h4>
         <p>Email Address: <%= @manager.email %></p>
         <br>
+        <a href="/managers/<%= @manager.slug %>/edit">Edit Manager Info</a>
+        <br>
         <h4>Employees:</h4>
             <ul>
                 <% @manager.employees.each do |employee|%>
                     <li><a href="/employees/<%= employee.slug %>"><%= employee.name %></a></li>
                 <% end %>
             </ul>
+        
 
         <footer>
             <a href="/employees">Employees List</a>

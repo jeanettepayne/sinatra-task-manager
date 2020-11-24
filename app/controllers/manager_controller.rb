@@ -58,6 +58,19 @@ class ManagerController < ApplicationController
         end
     end
 
+    get '/managers/:slug/edit' do
+        @manager = Manager.find_by_slug(params[:slug])
+
+        erb :'managers/edit_manager'
+    end
+
+    patch '/managers/:slug' do
+        @manager = Manager.find_by_slug(params[:slug])
+        @manager.update(params["manager"])
+
+        redirect "/managers/#{@manager.slug}"
+    end
+
 
     helpers do
 
