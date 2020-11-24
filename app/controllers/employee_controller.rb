@@ -52,6 +52,20 @@ class EmployeeController < ApplicationController
         erb :'employees/show_employee'
     end
 
+    get '/employees/:slug/edit' do
+        @employee = Employee.find_by_slug(params[:slug])
+
+        erb :'employees/edit_employee'
+    end
+
+    patch '/employees/:slug' do
+        @employee = Employee.find_by_slug(params[:slug])
+        params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
+        @employee.update(params["employee"])
+
+        redirect "/employees/#{@employee.slug}"
+    end
+
     get '/employees/:slug/delete' do
         @employee = Employee.find_by_slug(params[:slug])
         @employee.delete
