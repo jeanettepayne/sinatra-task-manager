@@ -11,9 +11,11 @@
         <h4>Department: <%= @manager.department %></h4>
         <p>Email Address: <%= @manager.email %></p>
         <br>
+        <% if @manager == current_user %>
         <a href="/managers/<%= @manager.slug %>/edit">Edit Manager Info</a>
         <br>
         <a href="/managers/<%= @manager.slug %>/delete">Delete Manager</a>
+        <% end %>
         <br>
         <h4>Employees:</h4>
             <ul>
