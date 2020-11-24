@@ -27,13 +27,19 @@
                 <option value="Sales">Sales</option>
             </select>
             <br>
-            <!-- Possibly add ability to add employees? -->
+        
             <label>Title: </label>
             <input type="text" name="manager[title]" id="manager_title" value="<%= @manager.title %>" required>
             <br>
             <label>Email: </label>
             <input type="email" name="manager[email]" id="manager_email" value="<%= @manager.email %>" required>
             <br>
+             <!-- Possibly add ability to add existing and/or new employees? -->
+            <label>Employee(s): </label>
+            <br>
+                <% Employee.all.each do |employee| %>
+                    <input type="checkbox" name="employee_id" value="<%= employee.id %>"><%= employee.name %><br>
+                <% end %>
            
             <input type="submit" value="Edit Manager">
 
