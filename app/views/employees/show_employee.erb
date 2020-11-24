@@ -15,6 +15,11 @@
         <p>Email Address: <%= @employee.email %></p>
         <br>
         <h4><a href="/tasks/<%= @employee.slug %>">See tasks assigned to <%= @employee.name %></h4>
+        <br>
+        <a href="/employees/<%= @employee.slug %>/edit">Edit Employee Info</a>
+        <br>
+        <a href="/employees/<%= @employee.slug %>/delete">Delete Employee</a>
+        <br>
 
         <footer>
             <a href="/employees">Employees List</a>

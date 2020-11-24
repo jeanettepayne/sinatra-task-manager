@@ -52,6 +52,13 @@ class EmployeeController < ApplicationController
         erb :'employees/show_employee'
     end
 
+    get '/employees/:slug/delete' do
+        @employee = Employee.find_by_slug(params[:slug])
+        @employee.delete
+
+        redirect '/employees'
+    end
+
     helpers do
 
         def logged_in?
