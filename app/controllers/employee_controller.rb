@@ -11,12 +11,15 @@ class EmployeeController < ApplicationController
     end
 
     post '/employees/signup' do
+        params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
+        # binding.pry
+        # @manager = Manager.find_by_slug(params["employee"]["manager"])
         # NEED TO ADD MANAGER BACK IN TO EMPLOYEE BELOW
         # @new_employee = Employee.create(name: params["employee"]["name"], department: params["employee"]["department"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
         @new_employee = Employee.new(params["employee"])
-        # binding.pry
         @new_employee.save
-    
+        
+        redirect "/employees/#{@new_employee.slug}"
     end
 
     get '/employees/login' do
