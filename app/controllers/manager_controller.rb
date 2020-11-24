@@ -16,8 +16,9 @@ class ManagerController < ApplicationController
     end
 
     post '/managers/signup' do
-        @manager = Manager.new(params["manager"])
+        @manager = Manager.create(params["manager"])
         if @manager.save
+            session[:manager_id] = @manager.id
             redirect "/managers/#{@manager.slug}"
         else
             redirect '/managers/signup'
