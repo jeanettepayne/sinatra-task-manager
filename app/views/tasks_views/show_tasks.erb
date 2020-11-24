@@ -15,9 +15,9 @@
                 Priority: <%= task.priority %><br></li>
         <% end %>
         </ul>
-
-        <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
-
+        <% if @employee == current_employee || @manager == current_manager %>
+            <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
+        <% end %>
         <footer>
         <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Employee Profile</a>
         <a href="/employees">Employees List</a>
