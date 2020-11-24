@@ -58,14 +58,14 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:slug/edit' do
-        if employee_logged_in?
+        if employee_logged_in? || manager_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
             if @employee && @employee == current_employee
                 erb :'employees/edit_employee'
             elsif @employee && @employee.manager == current_manager
                 erb :'employees/edit_employee'
             else
-                redirect "/employees"
+                redirect "/employees/#{@employee.slug}"
             end
         else
             redirect '/'

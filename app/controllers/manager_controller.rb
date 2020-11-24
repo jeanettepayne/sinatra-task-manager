@@ -62,7 +62,7 @@ class ManagerController < ApplicationController
             if @manager && @manager == current_manager
                 erb :'managers/edit_manager'
             else
-                redirect "/managers"
+                redirect "/managers/#{@manager.slug}"
             end
         else
             redirect '/'

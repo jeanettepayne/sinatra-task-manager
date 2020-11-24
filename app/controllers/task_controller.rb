@@ -20,7 +20,11 @@ class TaskController < ApplicationController
                 erb :'tasks_views/create_task'
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/create_task'
+            else
+                redirect "/tasks/#{@employee.slug}/new"
             end
+        else
+            redirect '/'
         end
     end
 
@@ -42,7 +46,7 @@ class TaskController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/edit_task'
             else
-                redirect "/tasks/#{@employee.slug}"
+                redirect "/tasks/#{@employee.slug}/#{@task.id}"
             end
         else
             redirect '/'
@@ -67,7 +71,7 @@ class TaskController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 task.delete
             else
-                redirect "/tasks/#{@employee.slug}"
+                redirect "/tasks/#{@employee.slug}/#{task.id}"
             end
         else
             redirect '/'
