@@ -25,7 +25,6 @@
                 <option value="Sales">Sales</option>
             </select>
             <br>
-            <!-- Possibly add ability to add employees? -->
             <label>Title: </label>
             <input type="text" name="manager[title]" id="manager_title" placeholder="Enter Job Title" required>
             <br>
@@ -35,6 +34,13 @@
             <label>Password: </label>
             <input type="password" name="manager[password]" id="manager_password" placeholder="Create Your Password" required>
             <br>
+            <!-- Possibly add ability to add employees? -->
+            <label>Employee(s): </label>
+            <br>
+                <% Employee.all.each do |employee| %>
+                    <input type="checkbox" name="employee_id" value="<%= employee.id %>"><%= employee.name %><br>
+                <% end %>
+        
             <input type="submit" value="Submit">
 
     </body>
