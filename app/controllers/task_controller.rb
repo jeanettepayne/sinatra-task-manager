@@ -1,40 +1,50 @@
 class TaskController < ApplicationController
 
-    # get '/tasks/:employee_slug/new' do
-    #     erb :'tasks_views/create_task'
-    # end
-
-    # post '/tasks' do
-
-    # end
-
     
     
     get '/tasks/:employee_slug' do
-        @employee = Employee.find_by_slug(params[:employee_slug])
-        @manager = @employee.manager
+        if employee_logged_in? || manager_logged_in?
+            @employee = Employee.find_by_slug(params[:employee_slug])
+            @manager = @employee.manager
 
-        erb :'tasks_views/show_tasks'
+            erb :'tasks_views/show_tasks'
+        else
+            redirect '/'
+        end
     end
 
     get '/tasks/:employee_slug/new' do
-        @employee = Employee.find_by_slug(params[:employee_slug])
-
-        erb :'tasks_views/create_task'
+        if employee_logged_in? || manager_logged_in?
+            @employee = Employee.find_by_slug(params[:employee_slug])
+            if @employee && @employee == current_employee
+                erb :'tasks_views/create_task'
+            elsif @employee && @employee.manager == current_manager
+                erb :'tasks_views/create_task'
+            end
+        end
     end
 
     get '/tasks/:employee_slug/:id' do
-        @employee = Employee.find_by_slug(params[:employee_slug])
-        @task = Task.find_by_id(params[:id])
+        if employee_logged_in? || manager_logged_in?
+            @employee = Employee.find_by_slug(params[:employee_slug])
+            @task = Task.find_by_id(params[:id])
 
-        erb :'tasks_views/show_task'
+            erb :'tasks_views/show_task'
+        end
     end
 
     get '/tasks/:employee_slug/:id/edit' do
-        @employee = Employee.find_by_slug(params[:employee_slug])
-        @task = Task.find_by_id(params[:id])
-
-        erb :'tasks_views/edit_task'
+        if employee_logged_in? || manager_logged_in?
+            @employee = Employee.find_by_slug(params[:employee_slug])
+            @task = Task.find_by_id(params[:id])
+            if @employee && @employee == current_employee
+                erb :'tasks_views/edit_task'
+            elsif @employee && @employee.manager == current_manager
+                erb :'tasks_views/edit_task'
+            end
+        else
+            redirect '/'
+        end
     end
 
     patch '/tasks/:employee_slug/:id' do
@@ -47,12 +57,18 @@ class TaskController < ApplicationController
     end
 
     get '/tasks/:employee_slug/:id/delete' do
-        task = Task.find_by_id(params[:id])
-        # binding.pry
-        @employee = task.employee
-        task.delete
-
-        redirect "/tasks/#{@employee.slug}"
+        if employee_logged_in? || manager_logged_in?
+            task = Task.find_by_id(params[:id])
+            @employee = task.employee
+            if @employee && @employee == current_employee
+                task.delete
+            elsif @employee && @employee.manager == current_manager
+                task.delete
+            else
+                redirect "/tasks/#{@employee.slug}"
+            end
+        else
+            redirect '/'
     end
 
     post '/tasks/:employee_slug' do
@@ -64,25 +80,6 @@ class TaskController < ApplicationController
         redirect "/tasks/#{@employee.slug}"
     end
 
-    # helpers do
-
-    #     def employee_logged_in?
-    #         !!current_employee
-    #     end
-
-    #     def current_employee
-    #         @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
-    #     end
-
-    #     def manager_logged_in?
-    #         !!current_manager
-    #     end
-
-    #     def current_manager
-    #         @current_manager ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
-    #     end
-
-    # end
 
 
 end
