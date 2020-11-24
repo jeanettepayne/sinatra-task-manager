@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <!-- This page will allow a manager or employee to create a task. -->
-    <!-- Add functionality to assign task -->
+    <!-- Add functionality to assign task - here or in controller? -->
     <head>
     
     </head>
 
     <body>
+        <h1>Create New Task for <%= @employee.name %></h1>
         <form action="/tasks" method="POST">
             <label>Task: </label>
             <input type="text" name="task[name]" placeholder="Enter Task" required>
