@@ -46,6 +46,7 @@ class EmployeeController < ApplicationController
     get '/employees/:slug' do
         if employee_logged_in? || manager_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
+            # @manager = @employee.manager
 
             erb :'employees/show_employee'
         else
