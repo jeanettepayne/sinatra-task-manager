@@ -1,9 +1,13 @@
 class EmployeeController < ApplicationController
 
     get '/employees' do
-        @employees = Employee.all
+        if logged_in?
+            @employees = Employee.all
         
-        erb :'employees/employees'
+            erb :'employees/employees'
+        else
+            redirect '/'
+        end
     end
 
     get '/employees/signup' do
@@ -44,9 +48,13 @@ class EmployeeController < ApplicationController
     # end
 
     get '/employees/:slug' do
-        @employee = Employee.find_by_slug(params[:slug])
+        if logged_in?
+            @employee = Employee.find_by_slug(params[:slug])
 
-        erb :'employees/show_employee'
+            erb :'employees/show_employee'
+        else
+            redirect '/'
+        end
     end
 
     get '/employees/:slug/edit' do
@@ -71,9 +79,12 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:slug/delete' do
-        @employee = Employee.find_by_slug(params[:slug])
-        @employee.delete
-
+        if logged_in?
+            @employee = Employee.find_by_slug(params[:slug])
+            if @employee && @employee == current_user
+                @employee.delete
+            end
+        end
         redirect '/employees'
     end
 

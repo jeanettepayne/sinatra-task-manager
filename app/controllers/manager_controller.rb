@@ -7,7 +7,7 @@ class ManagerController < ApplicationController
 
             erb :'managers/managers'
         else
-            redirect '/managers/login'
+            redirect '/'
         end
     end
 
