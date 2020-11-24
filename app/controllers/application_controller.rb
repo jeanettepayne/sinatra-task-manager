@@ -17,8 +17,8 @@ class ApplicationController < Sinatra::Base
     get '/logout' do
         if logged_in?
             session.destroy
-            redirect '/'
         end
+        redirect '/'
     end
 
     # helpers do
