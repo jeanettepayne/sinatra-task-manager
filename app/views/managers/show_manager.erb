@@ -13,6 +13,8 @@
         <br>
         <a href="/managers/<%= @manager.slug %>/edit">Edit Manager Info</a>
         <br>
+        <a href="/managers/<%= @manager.slug %>/delete">Delete Manager</a>
+        <br>
         <h4>Employees:</h4>
             <ul>
                 <% @manager.employees.each do |employee|%>

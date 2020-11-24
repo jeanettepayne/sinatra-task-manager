@@ -71,6 +71,13 @@ class ManagerController < ApplicationController
         redirect "/managers/#{@manager.slug}"
     end
 
+    get '/managers/:slug/delete' do
+        @manager = Manager.find_by_slug(params[:slug])
+        @manager.delete
+
+        redirect '/managers'
+    end
+
 
     helpers do
 
