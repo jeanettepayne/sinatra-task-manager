@@ -1,7 +1,7 @@
 class EmployeeController < ApplicationController
 
     get '/employees' do
-        if logged_in?
+        if employee_logged_in? || manager_logged_in?
             @employees = Employee.all
         
             erb :'employees/employees'
@@ -48,7 +48,7 @@ class EmployeeController < ApplicationController
     # end
 
     get '/employees/:slug' do
-        if logged_in?
+        if employee_logged_in? || manager_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
 
             erb :'employees/show_employee'
@@ -58,9 +58,11 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:slug/edit' do
-        if logged_in?
+        if employee_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
-            if @employee && @employee == current_user
+            if @employee && @employee == current_employee
+                erb :'employees/edit_employee'
+            elsif @employee && @employee.manager == current_manager
                 erb :'employees/edit_employee'
             else
                 redirect "/employees"
@@ -79,26 +81,28 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/:slug/delete' do
-        if logged_in?
+        if employee_logged_in? || manager_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
             if @employee && @employee == current_user
+                @employee.delete
+            elsif @employee  && @employee.manager == current_manager
                 @employee.delete
             end
         end
         redirect '/employees'
     end
 
-    helpers do
+    # helpers do
 
-        def logged_in?
-            !!current_user
-        end
+    #     def logged_in?
+    #         !!current_user
+    #     end
 
-        def current_user
-            @current_user ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
-        end
+    #     def current_user
+    #         @current_user ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
+    #     end
 
-    end
+    # end
 
 
 end

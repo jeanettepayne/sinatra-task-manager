@@ -87,16 +87,16 @@ class ManagerController < ApplicationController
     end
 
 
-    helpers do
+    # helpers do
 
-        def logged_in?
-            !!current_user
-        end
+    #     def logged_in?
+    #         !!current_user
+    #     end
 
-        def current_user
-            @current_user ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
-        end
+    #     def current_user
+    #         @current_user ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
+    #     end
 
-    end
+    # end
 
 end

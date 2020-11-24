@@ -64,25 +64,25 @@ class TaskController < ApplicationController
         redirect "/tasks/#{@employee.slug}"
     end
 
-    helpers do
+    # helpers do
 
-        def employee_logged_in?
-            !!current_employee
-        end
+    #     def employee_logged_in?
+    #         !!current_employee
+    #     end
 
-        def current_employee
-            @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
-        end
+    #     def current_employee
+    #         @current_employee ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
+    #     end
 
-        def manager_logged_in?
-            !!current_manager
-        end
+    #     def manager_logged_in?
+    #         !!current_manager
+    #     end
 
-        def current_manager
-            @current_manager ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
-        end
+    #     def current_manager
+    #         @current_manager ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
+    #     end
 
-    end
+    # end
 
 
 end
