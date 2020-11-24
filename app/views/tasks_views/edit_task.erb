@@ -6,7 +6,28 @@
     </head>
 
     <body>
-    
+        <h1>Edit Task</h1>
+        <form action="/tasks/<%= @employee.slug %>/<%= @task.id %>" method="POST">
+            <input type="hidden" name="_method" value="PATCH">
+            <label>Task: </label>
+            <input type="text" name="task[name]" value="<%= @task.name %>" required>
+            <br>
+            <label>Due Date: </label>
+            <input type="text" name="task[due_date]" value="<%= @task.due_date%>" required>
+            <br>
+            <label>Priority: </label>
+            <!-- Fix to select pre-selected value -->
+            <select name="task[priority]" id="task_priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Edit Task">
+
+        
+        </form>
     </body>
 
 </html>

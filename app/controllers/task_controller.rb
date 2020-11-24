@@ -29,6 +29,22 @@ class TaskController < ApplicationController
         erb :'tasks_views/show_task'
     end
 
+    get '/tasks/:employee_slug/:id/edit' do
+        @employee = Employee.find_by_slug(params[:employee_slug])
+        @task = Task.find_by_id(params[:id])
+
+        erb :'tasks_views/edit_task'
+    end
+
+    patch '/tasks/:employee_slug/:id' do
+        @employee = Employee.find_by_slug(params[:employee_slug])
+        @task = Task.find_by_id(params[:id])
+
+        @task.update(params["task"])
+
+        redirect "/tasks/#{@employee.slug}"
+    end
+
     get '/tasks/:employee_slug/:id/delete' do
         task = Task.find_by_id(params[:id])
         # binding.pry
