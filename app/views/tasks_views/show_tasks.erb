@@ -12,9 +12,17 @@
             <li><b><%= task.name %></b><br>
                 Due Date: <%= task.due_date %><br>
                 Priority: <%= task.priority %></li><br>
-            
         <% end %>
         </ul>
+
+        <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
     </body>
+
+    <footer>
+        <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Employee Profile</a>
+        <a href="/employees">Employees List</a>
+        <a href="/managers">Managers List</a>
+        <a href="/logout">Log Out</a>
+    </footer>
 
 </html>
