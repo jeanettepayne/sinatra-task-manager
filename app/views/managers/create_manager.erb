@@ -28,6 +28,11 @@
             <label>Title: </label>
             <input type="text" name="manager[title]" id="manager_title" placeholder="Enter Job Title" required>
             <br>
+            <label>Add Employee(s): </label>
+            <br>
+                <% Employee.all.each do |employee| %>
+                    <input type="checkbox" name="manager[employee_ids][]" value="<%= employee.id %>"><%= employee.name %><br>
+                <% end %>
             <label>Email: </label>
             <input type="email" name="manager[email]" id="manager_email" placeholder="Enter Email Address" required>
             <br>

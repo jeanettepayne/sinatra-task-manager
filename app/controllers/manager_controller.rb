@@ -19,7 +19,6 @@ class ManagerController < ApplicationController
         if Manager.find_by(email: params["manager"]["email"])
             redirect '/managers/signup'
         else
-            binding.pry
             @manager = Manager.create(params["manager"])
             if @manager.save
                 session[:manager_id] = @manager.id
@@ -69,6 +68,7 @@ class ManagerController < ApplicationController
 
     patch '/managers/:slug' do
         @manager = Manager.find_by_slug(params[:slug])
+
         @manager.update(params["manager"])
 
         redirect "/managers/#{@manager.slug}"

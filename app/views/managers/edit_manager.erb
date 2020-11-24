@@ -34,11 +34,11 @@
             <label>Email: </label>
             <input type="email" name="manager[email]" id="manager_email" value="<%= @manager.email %>" required>
             <br>
-             <!-- Possibly add ability to add existing and/or new employees? -->
-            <label>Employee(s): </label>
+             <!-- Possibly add ability to add employees? -->
+            <label>Add Employee(s): </label>
             <br>
                 <% Employee.all.each do |employee| %>
-                    <input type="checkbox" name="employee_id" value="<%= employee.id %>"><%= employee.name %><br>
+                    <input type="checkbox" name="manager[employee_ids][]" value="<%= employee.id %>" <%='checked' if @manager.employees.include?(employee)%>><%= employee.name %><br>
                 <% end %>
            
             <input type="submit" value="Edit Manager">
