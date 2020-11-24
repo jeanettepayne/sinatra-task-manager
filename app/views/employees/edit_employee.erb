@@ -15,13 +15,13 @@
             <label>Department: </label>
             <!-- potentially abstract later -->
                 <select name="employee[department]" id="employee_department">
-                <option value="Accounting">Accounting</option>
-                <option value="Human Resources">Human Resources</option>
-                <option value="Administration">Administration</option>
-                <option value="Research">Research</option>
-                <option value="Marketing">Marketing</option>
-                <option value="Production">Production</option>
-                <option value="Sales">Sales</option>
+                <option value="Accounting" selected if @employee.department>Accounting</option>
+                <option value="Human Resources" selected if @employee.department>Human Resources</option>
+                <option value="Administration" selected if @employee.department>Administration</option>
+                <option value="Research" selected if @employee.department>Research</option>
+                <option value="Marketing" selected if @employee.department>Marketing</option>
+                <option value="Production" selected if @employee.department>Production</option>
+                <option value="Sales" selected if @employee.department>Sales</option>
                 </select>
             <br>
             <label>Manager: </label>

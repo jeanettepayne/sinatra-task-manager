@@ -20,10 +20,13 @@ class EmployeeController < ApplicationController
         # @manager = Manager.find_by_slug(params["employee"]["manager"])
         # NEED TO ADD MANAGER BACK IN TO EMPLOYEE BELOW
         # @new_employee = Employee.create(name: params["employee"]["name"], department: params["employee"]["department"], title: params["employee"]["title"], email: params["employee"]["email"], password: params["employee"]["password"])
-        @new_employee = Employee.new(params["employee"])
-        @new_employee.save
-        
-        redirect "/employees/#{@new_employee.slug}"
+        @employee = Employee.create(params["employee"])
+        if @employee.save
+            session[:employee_id] = @employee.id
+            redirect "/employees/#{@employee.slug}"
+        else
+            redirect '/'
+        end
     end
 
     get '/employees/login' do
@@ -91,18 +94,6 @@ class EmployeeController < ApplicationController
         end
         redirect '/employees'
     end
-
-    # helpers do
-
-    #     def logged_in?
-    #         !!current_user
-    #     end
-
-    #     def current_user
-    #         @current_user ||= Employee.find_by(id: session[:employee_id]) if session[:employee_id]
-    #     end
-
-    # end
 
 
 end
