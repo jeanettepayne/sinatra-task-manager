@@ -2,7 +2,7 @@ class ManagerController < ApplicationController
 
 
     get '/managers' do
-        if logged_in?
+        if manager_logged_in? || employee_logged_in?
             @managers = Manager.all
 
             erb :'managers/managers'
@@ -47,7 +47,7 @@ class ManagerController < ApplicationController
     # end
 
     get '/managers/:slug' do
-        if logged_in?
+        if manager_logged_in? || employee_logged_in?
             @manager = Manager.find_by_slug(params[:slug])
         
             erb :'managers/show_manager'
@@ -57,9 +57,9 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/:slug/edit' do
-        if logged_in?
+        if manager_logged_in?
             @manager = Manager.find_by_slug(params[:slug])
-            if @manager && @manager == current_user
+            if @manager && @manager == current_manager
                 erb :'managers/edit_manager'
             else
                 redirect "/managers"
@@ -77,9 +77,9 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/:slug/delete' do
-        if logged_in?
+        if manager_logged_in?
             @manager = Manager.find_by_slug(params[:slug])
-            if @manager && @manager == current_user
+            if @manager && @manager == current_manager
                 @manager.delete
             end
         end
