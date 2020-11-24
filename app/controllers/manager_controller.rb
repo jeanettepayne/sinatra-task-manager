@@ -22,7 +22,6 @@ class ManagerController < ApplicationController
         else
             redirect '/managers/signup'
         end
-        # binding.pry
     end
 
     get '/managers/login' do
@@ -38,13 +37,6 @@ class ManagerController < ApplicationController
             redirect '/managers/login'
         end
     end
-
-    # get '/logout' do
-    #     if logged_in?
-    #         session.destroy
-    #     end
-    #     redirect '/'
-    # end
 
     get '/managers/:slug' do
         if manager_logged_in? || employee_logged_in?

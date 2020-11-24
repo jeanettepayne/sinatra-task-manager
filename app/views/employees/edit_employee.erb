@@ -23,7 +23,6 @@
                 <option value="Production">Production</option>
                 <option value="Sales">Sales</option>
                 </select>
-            <!-- FIX THIS -->
             <br>
             <label>Manager: </label>
                 <select name="employee[manager]" id="employee_manager">
@@ -39,6 +38,13 @@
             <input type="email" name="employee[email]" id="employee_email" value="<%= @employee.email %>" required>
             <br>
             <input type="submit" value="Edit Employee">
+
+            <footer>
+            <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Info Page</a>
+            <a href="/employees">Employees List</a>
+            <a href="/managers">Managers List</a>
+            <a href="/logout">Log Out</a>
+            </footer>
     </body>
 
 </html>
