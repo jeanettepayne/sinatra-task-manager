@@ -7,6 +7,7 @@ class TaskController < ApplicationController
     # post '/tasks' do
 
     # end
+
     
     get '/tasks/:employee_slug' do
         @employee = Employee.find_by_slug(params[:employee_slug])
@@ -16,12 +17,15 @@ class TaskController < ApplicationController
 
     get '/tasks/:employee_slug/new' do
         @employee = Employee.find_by_slug(params[:employee_slug])
-        
+
         erb :'tasks_views/create_task'
     end
 
-    post '/tasks/:employee_slug/new' do
-
+    post '/tasks/:employee_slug' do
+        @employee = Employee.find_by_slug(params[:employee_slug])
+        @task = Task.new(params["task"])
+        @task.employee_id = @employee.id
+        @task.save
     end
 
 

@@ -8,7 +8,7 @@
 
     <body>
         <h1>Create New Task for <%= @employee.name %></h1>
-        <form action="/tasks" method="POST">
+        <form action="/tasks/<%= @employee.slug %>" method="POST">
             <label>Task: </label>
             <input type="text" name="task[name]" placeholder="Enter Task" required>
             <br>
