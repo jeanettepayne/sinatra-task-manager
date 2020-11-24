@@ -39,13 +39,11 @@ class ManagerController < ApplicationController
         end
     end
 
-    # get '/managers/logout' do
+    # get '/logout' do
     #     if logged_in?
     #         session.destroy
-    #         redirect '/managers/login'
-    #     # else
-    #     #     redirect '/'
     #     end
+    #     redirect '/'
     # end
 
     get '/managers/:slug' do
@@ -59,9 +57,16 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/:slug/edit' do
-        @manager = Manager.find_by_slug(params[:slug])
-
-        erb :'managers/edit_manager'
+        if logged_in?
+            @manager = Manager.find_by_slug(params[:slug])
+            if @manager && @manager == current_user
+                erb :'managers/edit_manager'
+            else
+                redirect "/managers"
+            end
+        else
+            redirect '/'
+        end
     end
 
     patch '/managers/:slug' do

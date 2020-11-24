@@ -36,15 +36,12 @@ class EmployeeController < ApplicationController
         end
     end
 
-    # get '/employees/logout' do
+    # get '/logout' do
     #     if logged_in?
     #         session.destroy
-    #         redirect '/employees/login'
-    #     # else
-    #     #     redirect '/'
     #     end
+    #     redirect '/'
     # end
-
 
     get '/employees/:slug' do
         @employee = Employee.find_by_slug(params[:slug])
