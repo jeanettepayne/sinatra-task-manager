@@ -15,13 +15,17 @@ class EmployeeController < ApplicationController
     end
 
     post '/employees/signup' do
-        params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
-        @employee = Employee.create(params["employee"])
-        if @employee.save
-            session[:employee_id] = @employee.id
-            redirect "/employees/#{@employee.slug}"
-        else
+        if Employee.find_by(email: params["employee"]["email"])
             redirect '/employees/signup'
+        else
+            params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
+            @employee = Employee.create(params["employee"])
+            if @employee.save
+                session[:employee_id] = @employee.id
+                redirect "/employees/#{@employee.slug}"
+            else
+                redirect '/employees/signup'
+            end
         end
     end
 

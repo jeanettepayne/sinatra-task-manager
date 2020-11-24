@@ -16,12 +16,16 @@ class ManagerController < ApplicationController
     end
 
     post '/managers/signup' do
-        @manager = Manager.create(params["manager"])
-        if @manager.save
-            session[:manager_id] = @manager.id
-            redirect "/managers/#{@manager.slug}"
-        else
+        if Manager.find_by(email: params["manager"]["email"])
             redirect '/managers/signup'
+        else
+            @manager = Manager.create(params["manager"])
+            if @manager.save
+                session[:manager_id] = @manager.id
+                redirect "/managers/#{@manager.slug}"
+            else
+                redirect '/managers/signup'
+            end
         end
     end
 
@@ -78,18 +82,5 @@ class ManagerController < ApplicationController
         end
         redirect '/managers'
     end
-
-
-    # helpers do
-
-    #     def logged_in?
-    #         !!current_user
-    #     end
-
-    #     def current_user
-    #         @current_user ||= Manager.find_by(id: session[:manager_id]) if session[:manager_id]
-    #     end
-
-    # end
 
 end
