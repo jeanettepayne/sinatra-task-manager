@@ -49,10 +49,10 @@ class ManagerController < ApplicationController
     get '/managers/:slug' do
         if logged_in?
             @manager = Manager.find_by_slug(params[:slug])
-        # binding.pry
+        
             erb :'managers/show_manager'
         else
-            redirect '/managers/login'
+            redirect '/'
         end
     end
 
@@ -77,9 +77,12 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/:slug/delete' do
-        @manager = Manager.find_by_slug(params[:slug])
-        @manager.delete
-
+        if logged_in?
+            @manager = Manager.find_by_slug(params[:slug])
+            if @manager && @manager == current_user
+                @manager.delete
+            end
+        end
         redirect '/managers'
     end
 
