@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <!-- This page will show an individual employee's tasks. -->
+    <!-- This page will show an individual task. -->
     <head>
     
     </head>
@@ -9,9 +9,10 @@
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul>
         <% @employee.tasks.each do |task| %>
-            <li><b><a href="/tasks/<%= @employee.id %>/<%= task.id %>"><%= task.name %></a></b><br>
+            <li><b><%= task.name %></b><br>
                 Due Date: <%= task.due_date %><br>
-                Priority: <%= task.priority %><br></li>
+                Priority: <%= task.priority %><br>
+                <a href="/tasks/<%= task.id %>/delete">Delete Task</a></li><br>
         <% end %>
         </ul>
 
