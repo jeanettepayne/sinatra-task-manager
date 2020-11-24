@@ -41,6 +41,8 @@ class TaskController < ApplicationController
                 erb :'tasks_views/edit_task'
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/edit_task'
+            else
+                redirect "/tasks/#{@employee.slug}"
             end
         else
             redirect '/'
@@ -69,6 +71,7 @@ class TaskController < ApplicationController
             end
         else
             redirect '/'
+        end
     end
 
     post '/tasks/:employee_slug' do

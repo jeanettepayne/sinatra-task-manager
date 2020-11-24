@@ -9,8 +9,10 @@
         <h1><%= @task.name %></h1>
         <h3>Due Date: <%= @task.due_date %></h3>
         <h4>Priority: <%= @task.priority %></h4>
+        <% if @employee == current_employee || @employee.manager == current_manager %>
         <a href="/tasks/<%= @employee.slug %>/<%= @task.id %>/edit">Edit Task</a><br>
         <a href="/tasks/<%= @employee.slug %>/<%= @task.id %>/delete">Delete Task</a>
+        <% end %>
         <br>
         <br>
 
