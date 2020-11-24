@@ -9,7 +9,7 @@
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul>
         <% @employee.tasks.each do |task| %>
-            <li><b><a href="/tasks/<%= @employee.id %>/<%= task.id %>"><%= task.name %></a></b><br>
+            <li><b><a href="/tasks/<%= @employee.slug %>/<%= task.id %>"><%= task.name %></a></b><br>
                 Due Date: <%= task.due_date %><br>
                 Priority: <%= task.priority %><br></li>
         <% end %>

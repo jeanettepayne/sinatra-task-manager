@@ -9,16 +9,6 @@ class TaskController < ApplicationController
     # end
 
     
-
-    delete '/tasks/:id/delete' do
-        task = Task.find_by_id(params[:id])
-        binding.pry
-        @employee = task.employee
-        task.delete
-
-        redirect "/tasks/#{@employee.slug}"
-    end
-    
     
     get '/tasks/:employee_slug' do
         @employee = Employee.find_by_slug(params[:employee_slug])
@@ -33,7 +23,19 @@ class TaskController < ApplicationController
     end
 
     get '/tasks/:employee_slug/:id' do
+        @employee = Employee.find_by_slug(params[:employee_slug])
+        @task = Task.find_by_id(params[:id])
+
         erb :'tasks_views/show_task'
+    end
+
+    get '/tasks/:employee_slug/:id/delete' do
+        task = Task.find_by_id(params[:id])
+        # binding.pry
+        @employee = task.employee
+        task.delete
+
+        redirect "/tasks/#{@employee.slug}"
     end
 
     post '/tasks/:employee_slug' do

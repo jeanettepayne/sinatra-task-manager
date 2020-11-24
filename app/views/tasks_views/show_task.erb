@@ -6,21 +6,17 @@
     </head>
 
     <body>
-        <h1><%= @employee.name %>'s Tasks</h1>
-        <ul>
-        <% @employee.tasks.each do |task| %>
-            <li><b><%= task.name %></b><br>
-                Due Date: <%= task.due_date %><br>
-                Priority: <%= task.priority %><br>
-                <a href="/tasks/<%= task.id %>/delete">Delete Task</a></li><br>
-        <% end %>
-        </ul>
+        <h1><%= @task.name %></h1>
+        <h3>Due Date: <%= @task.due_date %></h3>
+        <h4>Priority: <%= @task.priority %></h4>
+        <a href="/tasks/<%= @employee.slug %>/<%= @task.id %>/delete">Delete Task</a>
+        <br>
+        <br>
 
-        <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
+        
     </body>
 
     <footer>
-        <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Employee Profile</a>
         <a href="/employees">Employees List</a>
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
