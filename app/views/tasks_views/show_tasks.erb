@@ -6,6 +6,7 @@
     </head>
 
     <body>
+    <% if employee_logged_in? || manager_logged_in? %>
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul>
         <% @employee.tasks.each do |task| %>
@@ -16,13 +17,18 @@
         </ul>
 
         <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
-    </body>
 
-    <footer>
+        <footer>
         <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Employee Profile</a>
         <a href="/employees">Employees List</a>
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
-    </footer>
+        </footer>
+    <% else %>
+        <h3>Please <a href="/">log in</a> to view <%= @employee.name %>'s Tasks</h3>
+    <% end %>
+    </body>
+
+    
 
 </html>
