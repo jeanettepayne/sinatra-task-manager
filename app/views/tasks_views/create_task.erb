@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
     <!-- This page will allow a manager or employee to create a task. -->
+    <!-- Add functionality to assign task -->
     <head>
     
     </head>
 
     <body>
+        <form action="/tasks" method="POST">
+            <label>Task: </label>
+            <input type="text" name="task[name]" placeholder="Enter Task" required>
+            <br>
+            <label>Due Date: </label>
+            <input type="text" name="task[due_date]" placeholder="MM-DD" required>
+            <br>
+            <label>Priority: </label>
+            <select name="task[priority]" id="task_priority">
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Add Task">
+
+        
+        </form>
     
     </body>
 
