@@ -13,6 +13,8 @@
         <h4>Department: <%= @employee.department %></h4>
         <p>Manager: <a href="/managers/<%= @employee.manager.slug %>"><%= @employee.manager.name %></a></p>
         <p>Email Address: <%= @employee.email %></p>
+        <br>
+        <h4><a href="/tasks/<%= @employee.slug %>">See tasks assigned to <%= @employee.name %></h4>
 
         <footer>
             <a href="/logout">Log Out</a>
