@@ -2,7 +2,29 @@
 <html>
     <!-- This page will allow an employee to edit their own information. -->
     <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
 
+            div {
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+        </style>
     </head>
 
     <body>
@@ -10,6 +32,7 @@
             <header>Logged in as <%= current_employee.email %></header>
         <% end %>
 
+        <div>
         <h1>Edit Profile for <%= @employee.name %></h1>
         <form action="/employees/<%= @employee.slug %>" method="POST">
             <input type="hidden" name="_method" value="PATCH">
@@ -44,6 +67,7 @@
             <input type="email" name="employee[email]" id="employee_email" value="<%= @employee.email %>" required>
             <br>
             <input type="submit" value="Edit Employee">
+            </div>
 
             <footer>
             <% if employee_logged_in? %>

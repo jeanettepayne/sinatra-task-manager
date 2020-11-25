@@ -2,17 +2,42 @@
 <html>
     <!-- This file will show redirect options. -->
     <head>
-    <link rel="stylesheet" type="text/css" href="./style.css">
+        <meta charset="UTF-8">
+        <!-- <link rel="stylesheet" type="text/css" href="/home/jeanettepayne/development/sinatra-task-manager/app/views/styles.css"> -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                text-align: center;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            div {
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: darkcyan;
+            }
+        </style>
     </head>
 
     <body>
+        <div>
         <h1>Welcome to the Work Zone Task Manager!</h1>
         <h2>Please log in or create an account to get started</h2>
         <h3><a href="/managers/login">Manager Login</a></h3>
         <h3><a href="/employees/login">Employee Login</a></h3>
         <br>
         <h3><a href="/managers/signup">Create New Manager Account</a></h3>
-        <h3><a href="/employees/signup">Create New Employee Account</a></h3>
+        <h3><a href="/employees/signup">Create New Employee Account</a></h3></div>
     </body>
 
 </html>

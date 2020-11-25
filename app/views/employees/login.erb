@@ -2,10 +2,33 @@
 <html>
     <!-- This page will allow an employee to log in. -->
     <head>
-    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            div {
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+        </style>
     </head>
 
     <body>
+        <div>
         <h1>Employee Login</h1>
         <br>
         <form method="POST" action="/employees/login">
@@ -17,6 +40,7 @@
             <br>
             <input type="submit" value="Log In">
         </form>
+        </div>
 
         <footer>
         <a href="/managers/login">Manager Login</a>

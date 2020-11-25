@@ -1,0 +1,25 @@
+
+
+body {
+    background-color: darkcyan;
+    font-family: 'Montserrat', sans-serif;
+}
+
+div {
+    background-color: darkgrey;
+    border: 1px solid black;
+    border-radius: 8px;
+    text-align: center;
+}
+
+a:link {
+    color: midnightblue;
+}
+
+a:visited {
+    color: rebeccapurple;
+}
+
+ul#list {
+    list-style-type: none;
+}

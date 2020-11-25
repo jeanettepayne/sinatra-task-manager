@@ -3,7 +3,34 @@
 
 <!-- This page will show a list of all employees with links to their individual info pages. -->
     <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
 
+            div {
+                text-align: center;
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+
+            ul#list {
+                list-style-type: none;
+            }
+
+        </style>
     </head>
 
     <body>
@@ -12,13 +39,16 @@
         <% elsif manager_logged_in? %>
             <header>Logged in as <%= current_manager.email %></header>
         <% end %>
-        <h1>Employees:</h1>
+
+        <div>
+        <h1>Employees</h1>
         <br>
-        <ul>
+        <ul id="list">
         <% @employees.each do |employee| %>
             <li><a href="/employees/<%= employee.slug %>"><%= employee.name %></a></li><br>
         <% end %>
         </ul>
+        </div>
 
 
         <footer>
