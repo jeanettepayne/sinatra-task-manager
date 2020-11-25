@@ -22,10 +22,11 @@
         <h4><a href="/tasks/<%= @employee.slug %>">See tasks assigned to <%= @employee.name %></h4>
         <br>
         <% if @employee == current_employee %>
-        <a href="/employees/<%= @employee.slug %>/edit">Edit Employee Info</a>
-        <br>
-        <a href="/employees/<%= @employee.slug %>/delete">Delete Employee</a>
-        <br>
+            <a href="/employees/<%= @employee.slug %>/edit">Edit Employee Info</a>
+            <br>
+        <% elsif @employee = current_employee || @employee.manager = current_manager %>
+            <a href="/employees/<%= @employee.slug %>/delete">Delete Employee</a>
+            <br>
         <% end %>
 
         <footer>
