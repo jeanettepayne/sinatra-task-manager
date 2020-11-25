@@ -6,6 +6,10 @@
     </head>
 
     <body>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% end %>
+
         <h1>Edit Manager Profile for <%= @manager.name %></h1>
 
         <form action="/managers/<%= @manager.slug %>" method="POST">

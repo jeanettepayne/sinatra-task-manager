@@ -6,6 +6,10 @@
     </head>
 
     <body>
+        <% if employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
         <h1>Edit Profile for <%= @employee.name %></h1>
         <form action="/employees/<%= @employee.slug %>" method="POST">
             <input type="hidden" name="_method" value="PATCH">

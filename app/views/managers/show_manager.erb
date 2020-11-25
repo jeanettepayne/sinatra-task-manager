@@ -6,6 +6,12 @@
     </head>
 
     <body>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% elsif employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
         <h1><%= @manager.name %></h1>
         <h3>Title: <%= @manager.title %></h3>
         <h4>Department: <%= @manager.department %></h4>
