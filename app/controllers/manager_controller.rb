@@ -30,7 +30,11 @@ class ManagerController < ApplicationController
     end
 
     get '/managers/login' do
-        erb :'managers/login'
+        if !manager_logged_in?
+            erb :'managers/login'
+        elsif manager_logged_in?
+            redirect '/managers'
+        end
     end
 
     post '/managers/login' do

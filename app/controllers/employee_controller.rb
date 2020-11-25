@@ -30,14 +30,18 @@ class EmployeeController < ApplicationController
     end
 
     get '/employees/login' do
-        erb :'employees/login'
+        if !employee_logged_in?
+            erb :'employees/login'
+        elsif employee_logged_in?
+            redirect '/employees'
+        end
     end
 
     post '/employees/login' do
         @employee = Employee.find_by(email: params["employee"]["email"])
         if @employee && @employee.authenticate(params["employee"]["password"])
             session[:employee_id] = @employee.id
-            redirect '/employees'
+            redirect "/employees/#{@employee.slug}"
         else
             redirect '/employees/login'
         end
@@ -88,6 +92,4 @@ class EmployeeController < ApplicationController
         end
         redirect '/employees'
     end
-
-
 end
