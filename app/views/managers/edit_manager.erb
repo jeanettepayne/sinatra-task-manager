@@ -48,7 +48,9 @@
             <input type="submit" value="Edit Manager">
 
             <footer>
-            <a href="/managers/<%= @manager.slug %>">Back to <%= @manager.name %>'s Info Page</a>
+            <% if manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
+            <% end %>
             <a href="/employees">Employees List</a>
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>

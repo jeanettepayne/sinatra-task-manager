@@ -7,6 +7,12 @@
     </head>
 
     <body>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% elsif employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
         <h1>Create New Task for <%= @employee.name %></h1>
         <form action="/tasks/<%= @employee.slug %>" method="POST">
             <label>Task: </label>
@@ -28,6 +34,14 @@
 
         
         </form>
+
+        <footer>
+            <% if employee_logged_in? %>
+                <a href="/employees/<%= current_employee.slug %>">Back to My Employee Page</a>
+            <% elsif manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
+            <% end %>
+        </footer>
     
     </body>
 

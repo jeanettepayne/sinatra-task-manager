@@ -29,6 +29,9 @@
         <% end %>
 
         <footer>
+            <% if manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
+            <% end %>
             <a href="/employees">Employees List</a>
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>

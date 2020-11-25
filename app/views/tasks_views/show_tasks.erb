@@ -6,7 +6,13 @@
     </head>
 
     <body>
-    <% if employee_logged_in? || manager_logged_in? %>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% elsif employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
+        <% if employee_logged_in? || manager_logged_in? %>
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul>
         <% @employee.tasks.each do |task| %>
@@ -19,7 +25,11 @@
             <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
         <% end %>
         <footer>
-        <a href="/employees/<%= @employee.slug %>">Back to <%= @employee.name %>'s Employee Profile</a>
+        <% if employee_logged_in? %>
+            <a href="/employees/<%= current_employee.slug %>">Back to My Employee Page</a>
+        <% elsif manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
+        <% end %>
         <a href="/employees">Employees List</a>
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
@@ -27,6 +37,7 @@
     <% else %>
         <h3>Please <a href="/">log in</a> to view <%= @employee.name %>'s Tasks</h3>
     <% end %>
+
     </body>
 
     

@@ -6,6 +6,12 @@
     </head>
 
     <body>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% elsif employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
         <h1><%= @task.name %></h1>
         <h3>Due Date: <%= @task.due_date %></h3>
         <h4>Priority: <%= @task.priority %></h4>
@@ -20,6 +26,11 @@
     </body>
 
     <footer>
+        <% if employee_logged_in? %>
+            <a href="/employees/<%= current_employee.slug %>">Back to My Employee Page</a>
+        <% elsif manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
+        <% end %>
         <a href="/employees">Employees List</a>
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>

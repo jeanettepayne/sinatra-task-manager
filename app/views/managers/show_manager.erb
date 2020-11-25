@@ -32,6 +32,9 @@
         
 
         <footer>
+            <% if employee_logged_in? %>
+                <a href="/employees/<%= current_employee.slug %>">Back to My Employee Page</a>
+            <% end %>
             <a href="/employees">Employees List</a>
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>
