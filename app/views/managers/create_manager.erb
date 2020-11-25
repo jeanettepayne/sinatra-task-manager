@@ -2,10 +2,43 @@
 <html>
     <!-- This page will allow you to create a new manager. -->
     <head>
-    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            div {
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                display: block;
+            }
+
+            footer a {
+                margin-right: 15px;
+            }
+        </style>
     </head>
 
     <body>
+        <div>
         <h1>Create New Manager Profile</h1>
 
         <form action="/managers/signup" method="POST">
@@ -42,6 +75,7 @@
     
         
             <input type="submit" value="Submit">
+            </div>
 
     </body>
 

@@ -2,7 +2,44 @@
 <html>
     <!-- This page will show an individual manager's information (name, department, title, email) -->
     <head>
-    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            div {
+                text-align: center;
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+
+            ul#list {
+                list-style-type: none;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                display: block;
+            }
+
+            footer a {
+                margin-right: 15px;
+            }
+
+        </style>
     </head>
 
     <body>
@@ -12,6 +49,7 @@
             <header>Logged in as <%= current_employee.email %></header>
         <% end %>
 
+        <div>
         <h1><%= @manager.name %></h1>
         <h3>Title: <%= @manager.title %></h3>
         <h4>Department: <%= @manager.department %></h4>
@@ -24,11 +62,12 @@
         <% end %>
         <br>
         <h4>Employees:</h4>
-            <ul>
+            <ul id="list">
                 <% @manager.employees.each do |employee|%>
                     <li><a href="/employees/<%= employee.slug %>"><%= employee.name %></a></li>
                 <% end %>
             </ul>
+        </div>
         
 
         <footer>

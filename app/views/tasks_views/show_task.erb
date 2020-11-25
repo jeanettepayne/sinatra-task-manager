@@ -2,7 +2,39 @@
 <html>
     <!-- This page will show an individual task. -->
     <head>
-    
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background-color: darkcyan;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            div {
+                background-color: darkgrey;
+                border: 1px solid black;
+                border-radius: 8px;
+                text-align: center;
+            }
+
+            a:link {
+                color: midnightblue;
+            }
+
+            a:visited {
+                color: rebeccapurple;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                display: block;
+            }
+
+            footer a {
+                margin-right: 15px;
+            }
+        </style>
     </head>
 
     <body>
@@ -12,6 +44,7 @@
             <header>Logged in as <%= current_employee.email %></header>
         <% end %>
 
+        <div>
         <h1><%= @task.name %></h1>
         <h3>Due Date: <%= @task.due_date %></h3>
         <h4>Priority: <%= @task.priority %></h4>
@@ -21,9 +54,8 @@
         <% end %>
         <br>
         <br>
-
+        </div>
         
-    </body>
 
     <footer>
         <% if employee_logged_in? %>
@@ -35,5 +67,6 @@
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
     </footer>
+    </body>
 
 </html>
