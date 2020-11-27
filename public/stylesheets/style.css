@@ -12,6 +12,11 @@ div {
     text-align: center;
 }
 
+div form {
+    display: inline-block;
+    text-align: left;
+}
+
 a:link {
     color: midnightblue;
 }

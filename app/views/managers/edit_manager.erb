@@ -2,10 +2,11 @@
 <html>
     <!-- This page will allow a manager to edit their information. -->
     <head>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
         <style>
-            body {
+            /* body {
                 background-color: darkcyan;
                 font-family: 'Montserrat', sans-serif;
             }
@@ -33,7 +34,7 @@
 
             footer a {
                 margin-right: 15px;
-            }
+            } */
         </style>
     </head>
 
@@ -71,11 +72,11 @@
             <label>Email: </label>
             <input type="email" name="manager[email]" id="manager_email" value="<%= @manager.email %>" required>
             <br>
-             <!-- Possibly add ability to add employees? -->
+             
             <label>Add Employee(s): </label>
             <br>
                 <% Employee.all.each do |employee| %>
-                    <input type="checkbox" name="manager[employee_ids][]" value="<%= employee.id %>" <%='checked' if @manager.employees.include?(employee)%>><%= employee.name %><br>
+                    <input type="checkbox" id="employees" name="manager[employee_ids][]" value="<%= employee.id %>" <%='checked' if @manager.employees.include?(employee)%>><%= employee.name %><br>
                 <% end %>
            
             <input type="submit" value="Edit Manager">
