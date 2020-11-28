@@ -50,8 +50,10 @@
             </div>
 
             <footer>
-            <% if employee_logged_in? %>
+           <% if employee_logged_in? %>
                 <a href="/employees/<%= current_employee.slug %>">Back to My Employee Page</a>
+            <% elsif manager_logged_in? %>
+                <a href="/managers/<%= current_manager.slug %>">Back to My Manager Page</a>
             <% end %>
             <a href="/employees">Employees List</a>
             <a href="/managers">Managers List</a>
