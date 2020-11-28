@@ -9,6 +9,10 @@
 
     <body>
         <div>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Manager Login</h1>
         <br>
         <form method="POST" action="/managers/login" id="form">

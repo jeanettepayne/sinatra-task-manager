@@ -17,7 +17,8 @@ class ManagerController < ApplicationController
 
     post '/managers/signup' do
         if Manager.find_by(email: params["manager"]["email"])
-            redirect '/managers/signup'
+            flash[:message] = "Manager already exists! Please log in."
+            redirect '/managers/login'
         else
             @manager = Manager.create(params["manager"])
             if @manager.save

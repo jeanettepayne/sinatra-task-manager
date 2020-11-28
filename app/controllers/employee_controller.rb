@@ -18,7 +18,6 @@ class EmployeeController < ApplicationController
         if Employee.find_by(email: params["employee"]["email"])
             flash[:message] = "Employee already exists! Please log in."
             redirect '/employees/login'
-            # redirect '/employees/signup'
         else
             params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
             @employee = Employee.create(params["employee"])
