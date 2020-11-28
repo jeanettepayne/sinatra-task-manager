@@ -9,6 +9,10 @@
 
     <body>
         <div>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Create New Employee Profile</h1>
 
         <form action="/employees/signup" method="POST">

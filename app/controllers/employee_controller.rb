@@ -25,6 +25,7 @@ class EmployeeController < ApplicationController
                 session[:employee_id] = @employee.id
                 redirect "/employees/#{@employee.slug}"
             else
+                flash[:message] = "Something went wrong! Please try again."
                 redirect '/employees/signup'
             end
         end

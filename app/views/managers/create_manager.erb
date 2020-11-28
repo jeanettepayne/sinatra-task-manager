@@ -9,6 +9,10 @@
 
     <body>
         <div>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Create New Manager Profile</h1>
 
         <form action="/managers/signup" method="POST">

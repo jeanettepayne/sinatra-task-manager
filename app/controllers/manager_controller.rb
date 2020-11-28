@@ -25,6 +25,7 @@ class ManagerController < ApplicationController
                 session[:manager_id] = @manager.id
                 redirect "/managers/#{@manager.slug}"
             else
+                flash[:message] = "Something went wrong! Please try again."
                 redirect '/managers/signup'
             end
         end
