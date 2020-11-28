@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'pry'
 gem 'tux'
 gem 'sqlite3'
+gem 'rack-flash3'
 
 
 group :test do

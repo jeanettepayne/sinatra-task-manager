@@ -1,4 +1,5 @@
 require './config/environment'
+require 'rack-flash'
 
 class ApplicationController < Sinatra::Base
 
@@ -8,6 +9,7 @@ class ApplicationController < Sinatra::Base
         # set :database, "sqlite3:task-manager.sqlite3"
         enable :sessions
         set :session_secret, "password_security"
+        use Rack::Flash
     end
 
     get '/' do
