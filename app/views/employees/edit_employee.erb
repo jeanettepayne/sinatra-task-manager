@@ -21,22 +21,38 @@
             <br>
             <label>Department: </label>
             <!-- potentially abstract later -->
-                <select name="employee[department]" id="employee_department">
-                <option value="Select Department">--Select Department--</option>
-                <option value="Accounting" <%='selected' if @employee.department = "Accounting"%>>Accounting</option>
+                <!-- <select name="employee[department]" id="employee_department">
+                <option value="Accounting" <%= 'selected' if @employee.department = "Accounting" %>>Accounting</option>
                 <option value="Human Resources" <%='selected' if @employee.department = "Human Resources"%>>Human Resources</option>
                 <option value="Administration" <%='selected' if @employee.department = "Administration"%>>Administration</option>
                 <option value="Research" <%='selected' if @employee.department = "Research"%>>Research</option>
                 <option value="Marketing" <%='selected' if @employee.department = "Marketing"%>>Marketing</option>
                 <option value="Production" <%='selected' if @employee.department = "Production"%>>Production</option>
                 <option value="Sales" <%='selected' if @employee.department = "Sales"%>>Sales</option>
+                </select> -->
+               
+                <select name="employee[department]" id="employee_department">
+                <option value="Select Department" selected disabled hidden>--Select Department--</option>
+                <option value="Accounting">Accounting</option>
+                <option value="Human Resources">Human Resources</option>
+                <option value="Administration">Administration</option>
+                <option value="Research">Research</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Production">Production</option>
+                <option value="Sales">Sales</option>
                 </select>
             <br>
+            <br>
             <label>Manager: </label>
-                <select name="employee[manager]" id="employee_manager">
-                    <option value="Select Manager">--Select Manager--</option>
+                <!-- <select name="employee[manager]" id="employee_manager">
                 <% Manager.all.each do |manager| %>
                     <option value="<%= manager.slug %>" <%= 'selected' if @employee.manager = manager %>><%= manager.name %><br>
+                <% end %>
+                </select> -->
+                 <select name="employee[manager]" id="employee_manager">
+                    <option value="Select Manager" selected disabled hidden>--Select Manager--</option>
+                <% Manager.all.each do |manager| %>
+                    <option value="<%= manager.slug %>"><%= manager.name %><br>
                 <% end %>
                 </select>
             <br>

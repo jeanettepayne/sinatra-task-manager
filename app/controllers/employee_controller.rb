@@ -63,6 +63,7 @@ class EmployeeController < ApplicationController
             @employee = Employee.find_by_slug(params[:slug])
             if @employee && @employee == current_employee
                 erb :'employees/edit_employee'
+                # binding.pry
             elsif @employee && @employee.manager == current_manager
                 erb :'employees/edit_employee'
             else
@@ -75,8 +76,10 @@ class EmployeeController < ApplicationController
 
     patch '/employees/:slug' do
         @employee = Employee.find_by_slug(params[:slug])
+        # binding.pry
         params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
         @employee.update(params["employee"])
+        @employee.save
 
         redirect "/employees/#{@employee.slug}"
     end
