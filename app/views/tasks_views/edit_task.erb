@@ -28,10 +28,9 @@
             <label>Priority: </label>
             <!-- Fix to select pre-selected value -->
             <select name="task[priority]" id="task_priority">
-                <option value="Select Priority">--Select Priority--</option>
-                <option value="High">High</option>
-                <option value="Medium">Medium</option>
-                <option value="Low">Low</option>
+                <option value="High" <%='selected' if @task.priority == "High"%>>High</option>
+                <option value="Medium" <%='selected' if @task.priority == "Medium"%>>Medium</option>
+                <option value="Low" <%='selected' if @task.priority == "Low"%>>Low</option>
             </select>
             <br>
             <br>
