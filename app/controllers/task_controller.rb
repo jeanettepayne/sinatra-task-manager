@@ -9,6 +9,7 @@ class TaskController < ApplicationController
 
             erb :'tasks_views/show_tasks'
         else
+            flash[:message] = "Please log in to view tasks"
             redirect '/'
         end
     end
@@ -24,6 +25,7 @@ class TaskController < ApplicationController
                 redirect "/tasks/#{@employee.slug}/new"
             end
         else
+            flash[:message] = "Please log in to add tasks"
             redirect '/'
         end
     end
@@ -34,6 +36,9 @@ class TaskController < ApplicationController
             @task = Task.find_by_id(params[:id])
 
             erb :'tasks_views/show_task'
+        else
+            flash[:message] = "Please log in to view tasks"
+            redirect '/'
         end
     end
 
@@ -49,6 +54,7 @@ class TaskController < ApplicationController
                 redirect "/tasks/#{@employee.slug}/#{@task.id}"
             end
         else
+            flash[:message] = "Please log in to edit tasks"
             redirect '/'
         end
     end
@@ -74,6 +80,7 @@ class TaskController < ApplicationController
                 redirect "/tasks/#{@employee.slug}/#{task.id}"
             end
         else
+            flash[:message] = "Please log in to delete tasks"
             redirect '/'
         end
     end
