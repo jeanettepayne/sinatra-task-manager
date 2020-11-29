@@ -2,6 +2,8 @@
 
 > A web app designed to aid in workplace work flow, wherein employees can add/edit/delete tasks of their own, and managers can add/edit/delete tasks for employees.
 
+> To use the Sinatra Task Manager, fork and clone this repository to your local environment, run bundle install, then run "shotgun" from the command line to run the program on your local host. Go to the localhost location specified in your terminal and you should be good to go!
+
 ## Author
 
 👤 **Jeanette Payne**
