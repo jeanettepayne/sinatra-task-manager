@@ -7,6 +7,7 @@ class ManagerController < ApplicationController
 
             erb :'managers/managers'
         else
+            flash[:message] = "Log in to see manager list"
             redirect '/'
         end
     end
@@ -45,6 +46,7 @@ class ManagerController < ApplicationController
             session[:manager_id] = @manager.id
             redirect '/managers'
         else
+            flash[:message] = "Something went wrong! Please try again"
             redirect '/managers/login'
         end
     end
@@ -55,6 +57,7 @@ class ManagerController < ApplicationController
         
             erb :'managers/show_manager'
         else
+            flash[:message] = "Please log in to see manager info"
             redirect '/'
         end
     end
@@ -65,9 +68,11 @@ class ManagerController < ApplicationController
             if @manager && @manager == current_manager
                 erb :'managers/edit_manager'
             else
+                flash[:message] = "Looks like you don't have permission to edit this manager!"
                 redirect "/managers/#{@manager.slug}"
             end
         else
+            flash[:message] = "Please log in to edit manager info"
             redirect '/'
         end
     end
@@ -87,7 +92,8 @@ class ManagerController < ApplicationController
                 @manager.delete
             end
         end
-        redirect '/managers'
+        flash[:message] = "Looks like you don't have permission to delete this manager!"
+        redirect "/managers/#{@manager.slug}"
     end
 
 end
