@@ -90,6 +90,8 @@ class ManagerController < ApplicationController
             @manager = Manager.find_by_slug(params[:slug])
             if @manager && @manager == current_manager
                 @manager.delete
+                flash[:message] = "Manager successfully deleted"
+                redirect '/'
             end
         end
         flash[:message] = "Looks like you don't have permission to delete this manager!"

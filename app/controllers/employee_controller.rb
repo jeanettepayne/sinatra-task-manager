@@ -95,8 +95,12 @@ class EmployeeController < ApplicationController
             @employee = Employee.find_by_slug(params[:slug])
             if @employee && @employee == current_employee
                 @employee.delete
+                flash[:message] = "Employee successfully deleted"
+                redirect '/'
             elsif @employee  && @employee.manager == current_manager
                 @employee.delete
+                flash[:message] = "Employee successfully deleted"
+                redirect '/'
             end
         end
         flash[:message] = "Looks like you don't have permission to delete this employee!"

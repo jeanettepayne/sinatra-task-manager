@@ -15,6 +15,10 @@
         <% end %>
 
         <div>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <% if employee_logged_in? || manager_logged_in? %>
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul id="list">

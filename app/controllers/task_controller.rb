@@ -74,8 +74,12 @@ class TaskController < ApplicationController
             @employee = task.employee
             if @employee && @employee == current_employee
                 task.delete
+                flash[:message] = "Task successfully deleted"
+                redirect "/tasks/#{@employee.slug}"
             elsif @employee && @employee.manager == current_manager
                 task.delete
+                flash[:message] = "Task successfully deleted"
+                redirect "/tasks/#{@employee.slug}"
             else
                 redirect "/tasks/#{@employee.slug}/#{task.id}"
             end
