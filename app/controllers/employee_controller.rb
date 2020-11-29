@@ -6,6 +6,7 @@ class EmployeeController < ApplicationController
         
             erb :'employees/employees'
         else
+            flash[:message] = "Log in to see employee list"
             redirect '/'
         end
     end
@@ -45,6 +46,7 @@ class EmployeeController < ApplicationController
             session[:employee_id] = @employee.id
             redirect "/employees/#{@employee.slug}"
         else
+            flash[:message] = "Something went wrong! Please try again"
             redirect '/employees/login'
         end
     end
@@ -56,6 +58,7 @@ class EmployeeController < ApplicationController
 
             erb :'employees/show_employee'
         else
+            flash[:message] = "Please log in to see employee info"
             redirect '/'
         end
     end
@@ -69,9 +72,11 @@ class EmployeeController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 erb :'employees/edit_employee'
             else
+                flash[:message] = "Looks like you don't have permission to edit this employee!"
                 redirect "/employees/#{@employee.slug}"
             end
         else
+            flash[:message] = "Please log in to edit employee info"
             redirect '/'
         end
     end
@@ -89,13 +94,14 @@ class EmployeeController < ApplicationController
     get '/employees/:slug/delete' do
         if employee_logged_in? || manager_logged_in?
             @employee = Employee.find_by_slug(params[:slug])
-            if @employee && @employee == current_user
+            if @employee && @employee == current_employee
                 @employee.delete
             elsif @employee  && @employee.manager == current_manager
                 @employee.delete
             end
         end
-        redirect '/employees'
+        flash[:message] = "Looks like you don't have permission to delete this employee!"
+        redirect "/employees/#{@employee.slug}"
     end
 
 end

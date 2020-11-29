@@ -16,6 +16,10 @@
         <% end %>
 
         <div>
+        <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+
         <h1><%= @employee.name %></h1>
         <h3>Title: <%= @employee.title %></h3>
         <h4>Department: <%= @employee.department %></h4>
@@ -24,10 +28,9 @@
         <br>
         <h4><a href="/tasks/<%= @employee.slug %>">See tasks assigned to <%= @employee.name %></h4>
         <br>
-        <% if @employee == current_employee %>
+        <% if @employee == current_employee || @employee.manager == current_manager %>
             <a href="/employees/<%= @employee.slug %>/edit">Edit Employee Info</a>
             <br>
-        <% elsif @employee = current_employee || @employee.manager = current_manager %>
             <a href="/employees/<%= @employee.slug %>/delete">Delete Employee</a>
             <br>
         <% end %>
