@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <!-- This page will allow a manager to edit their information. -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <% if manager_logged_in? %>
-            <header>Logged in as <%= current_manager.email %></header>
-        <% end %>
+<!-- This page allows a manager to edit their own information. -->
+  
 
         <div>
         <h1>Edit Manager Profile for <%= @manager.name %></h1>
@@ -21,7 +10,6 @@
             <input type="text" name="manager[name]" id="manager_name" value="<%= @manager.name %>" required>
             <br>
             <label>Department: </label>
-            <!-- potentially abstract later -->
             <select name="manager[department]" id="manager_department">
                 <option value="Accounting" <%='selected' if @manager.department == "Accounting"%>>Accounting</option>
                 <option value="Human Resources" <%='selected' if @manager.department == "Human Resources"%>>Human Resources</option>
@@ -58,6 +46,4 @@
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>
             </footer>
-    </body>
-
-</html>
+    

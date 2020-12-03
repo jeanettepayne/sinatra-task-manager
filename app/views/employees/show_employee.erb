@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <!-- This page will show an individual employee's information (name, department, title, email).
-    Will include link to employee task list, will redirect if not logged in. -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <% if employee_logged_in? %>
-            <header>Logged in as <%= current_employee.email %></header>
-        <% elsif manager_logged_in? %>
-            <header>Logged in as <%= current_manager.email %></header>
-        <% end %>
+    <!-- This page shows an individual employee's information (name, department, title, email).
+    Includes link to employee task list, will redirect if not logged in. -->
 
         <div>
         <% if flash.has?(:message) %>
@@ -46,6 +32,4 @@
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>
         </footer>
-    </body>
-
-</html>
+ 

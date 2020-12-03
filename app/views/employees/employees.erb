@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<!-- This page will show a list of all employees with links to their individual info pages. -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <% if employee_logged_in? %>
-            <header>Logged in as <%= current_employee.email %></header>
-        <% elsif manager_logged_in? %>
-            <header>Logged in as <%= current_manager.email %></header>
-        <% end %>
+<!-- This page shows a list of all employees with links to their individual info pages. -->
 
         <div>
         <h1>Employees</h1>
@@ -35,5 +20,3 @@
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>
         </footer>
-    </body>
-</html>

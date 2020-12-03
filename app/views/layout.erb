@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        <% if manager_logged_in? %>
+            <header>Logged in as <%= current_manager.email %></header>
+        <% elsif employee_logged_in? %>
+            <header>Logged in as <%= current_employee.email %></header>
+        <% end %>
+
+
+            <%= yield %>
+        
+        
+    </body>
+
+</html>

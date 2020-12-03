@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <!-- This file will show redirect options. -->
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
+ <!-- This file shows login/account creation options. -->
+  
         <div>
         <% if flash.has?(:message) %>
         <%= flash[:message] %>
@@ -21,6 +12,4 @@
         <br>
         <h3><a href="/managers/signup">Create New Manager Account</a></h3>
         <h3><a href="/employees/signup">Create New Employee Account</a></h3></div>
-    </body>
-
-</html>
+  

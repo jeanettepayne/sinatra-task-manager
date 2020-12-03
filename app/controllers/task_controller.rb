@@ -22,7 +22,7 @@ class TaskController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/create_task'
             else
-                redirect "/tasks/#{@employee.slug}/new"
+                redirect "/tasks/#{@employee.slug}"
             end
         else
             flash[:message] = "Please log in to add tasks"

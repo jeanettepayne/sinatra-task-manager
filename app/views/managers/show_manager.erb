@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <!-- This page will show an individual manager's information (name, department, title, email) -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <% if manager_logged_in? %>
-            <header>Logged in as <%= current_manager.email %></header>
-        <% elsif employee_logged_in? %>
-            <header>Logged in as <%= current_employee.email %></header>
-        <% end %>
+ <!-- This page shows an individual manager's information (name, department, title, email) -->
+  
 
         <div>
         <h1><%= @manager.name %></h1>
@@ -45,6 +32,4 @@
             <a href="/managers">Managers List</a>
             <a href="/logout">Log Out</a>
         </footer>
-    </body>
-
-</html>
+ 

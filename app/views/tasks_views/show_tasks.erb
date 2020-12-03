@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <!-- This page will show an individual employee's tasks. -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
-
-    <body>
-        <% if manager_logged_in? %>
-            <header>Logged in as <%= current_manager.email %></header>
-        <% elsif employee_logged_in? %>
-            <header>Logged in as <%= current_employee.email %></header>
-        <% end %>
+<!-- This page shows an individual employee's tasks. -->
 
         <div>
         <% if flash.has?(:message) %>
@@ -44,12 +30,3 @@
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
         </footer>
-    <!-- <% else %>
-        <h3>Please <a href="/">log in</a> to view <%= @employee.name %>'s Tasks</h3>
-    <% end %> -->
-
-    </body>
-
-    
-
-</html>

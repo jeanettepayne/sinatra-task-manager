@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <!-- This page will allow a manager to log in. -->
-    <head>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
-    </head>
+<!-- This page allows a manager to log in. -->
 
-    <body>
         <div>
         <% if flash.has?(:message) %>
         <%= flash[:message] %>
@@ -31,6 +23,4 @@
         <a href="/employees/signup">Create New Employee Account</a>
         <a href="/managers/signup">Create New Manager Account</a>
         </footer>
-    </body>
-
-</html>
+    
