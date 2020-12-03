@@ -13,7 +13,13 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/' do
-        erb :'index'
+        if employee_logged_in?
+            redirect '/employees'
+        elsif manager_logged_in?
+             redirect '/managers'
+        else
+             erb :'index'
+        end
     end
 
     get '/logout' do

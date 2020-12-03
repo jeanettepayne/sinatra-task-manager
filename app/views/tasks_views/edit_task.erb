@@ -1,6 +1,10 @@
     <!-- This page allows an employee or their manager to edit a task. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Edit Task</h1>
         <form action="/tasks/<%= @employee.slug %>/<%= @task.id %>" method="POST">
             <input type="hidden" name="_method" value="PATCH">

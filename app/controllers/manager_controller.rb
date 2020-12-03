@@ -72,8 +72,9 @@ class ManagerController < ApplicationController
                 redirect "/managers/#{@manager.slug}"
             end
         else
-            flash[:message] = "Please log in to edit manager info"
-            redirect '/'
+            @manager = Manager.find_by_slug(params[:slug])
+            flash[:message] = "Looks like you don't have permission to edit this manager!"
+            redirect "/managers/#{@manager.slug}"
         end
     end
 

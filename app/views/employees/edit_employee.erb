@@ -1,6 +1,10 @@
     <!-- This page allows an employee or their manager to edit their information. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Edit Profile for <%= @employee.name %></h1>
         <form action="/employees/<%= @employee.slug %>" method="POST">
             <input type="hidden" name="_method" value="PATCH">

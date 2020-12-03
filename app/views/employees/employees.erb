@@ -1,6 +1,10 @@
 <!-- This page shows a list of all employees with links to their individual info pages. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Employees</h1>
         <br>
         <ul id="list">

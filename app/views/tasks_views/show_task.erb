@@ -1,6 +1,10 @@
     <!-- This page shows an individual task. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1><%= @task.name %></h1>
         <h3>Due Date: <%= @task.due_date %></h3>
         <h4>Priority: <%= @task.priority %></h4>

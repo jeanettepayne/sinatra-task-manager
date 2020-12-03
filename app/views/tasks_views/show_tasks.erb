@@ -5,7 +5,7 @@
         <%= flash[:message] %>
         <% end %>
         
-        <% if employee_logged_in? || manager_logged_in? %>
+        
         <h1><%= @employee.name %>'s Tasks</h1>
         <ul id="list">
         <% @employee.tasks.each do |task| %>
@@ -14,6 +14,7 @@
                 Priority: <%= task.priority %><br></li>
         <% end %>
         </ul>
+     
         <% if @employee == current_employee || @manager == current_manager %>
             <h4><a href="/tasks/<%= @employee.slug %>/new">Add New Task</h4>
         <% end %>
@@ -30,3 +31,5 @@
         <a href="/managers">Managers List</a>
         <a href="/logout">Log Out</a>
         </footer>
+
+    

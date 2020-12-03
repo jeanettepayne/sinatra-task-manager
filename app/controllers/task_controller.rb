@@ -22,6 +22,7 @@ class TaskController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/create_task'
             else
+                flash[:message] = "Looks like you don't have permission to add tasks for this employee!"
                 redirect "/tasks/#{@employee.slug}"
             end
         else
@@ -51,6 +52,7 @@ class TaskController < ApplicationController
             elsif @employee && @employee.manager == current_manager
                 erb :'tasks_views/edit_task'
             else
+                flash[:message] = "Looks like you don't have permission to edit this task!"
                 redirect "/tasks/#{@employee.slug}/#{@task.id}"
             end
         else
@@ -81,6 +83,7 @@ class TaskController < ApplicationController
                 flash[:message] = "Task successfully deleted"
                 redirect "/tasks/#{@employee.slug}"
             else
+                flash[:message] = "Looks like you don't have permission to delete this task! Nice try!"
                 redirect "/tasks/#{@employee.slug}/#{task.id}"
             end
         else
@@ -97,7 +100,4 @@ class TaskController < ApplicationController
         
         redirect "/tasks/#{@employee.slug}"
     end
-
-
-
 end

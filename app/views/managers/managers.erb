@@ -1,6 +1,10 @@
 <!-- This page shows a list of all managers with links to each manager's info page. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Managers</h1>
         <br>
         <ul id="list">

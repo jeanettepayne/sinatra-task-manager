@@ -1,6 +1,10 @@
     <!-- This page allows the current employee or their manager to create a task. -->
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Create New Task for <%= @employee.name %></h1>
         <form action="/tasks/<%= @employee.slug %>" method="POST">
             <label>Task: </label>

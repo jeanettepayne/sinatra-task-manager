@@ -2,6 +2,10 @@
   
 
         <div>
+         <% if flash.has?(:message) %>
+        <%= flash[:message] %>
+        <% end %>
+        
         <h1>Edit Manager Profile for <%= @manager.name %></h1>
 
         <form action="/managers/<%= @manager.slug %>" method="POST">
