@@ -12,9 +12,10 @@
         <% elsif employee_logged_in? %>
             <header>Logged in as <%= current_employee.email %></header>
         <% end %>
-
+        
 
             <%= yield %>
+        
         
         
     </body>
