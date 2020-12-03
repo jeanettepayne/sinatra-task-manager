@@ -36,6 +36,7 @@ class EmployeeController < ApplicationController
         if !employee_logged_in?
             erb :'employees/login'
         elsif employee_logged_in?
+            flash[:message] = "You're already logged in!"
             redirect '/employees'
         end
     end
@@ -85,7 +86,6 @@ class EmployeeController < ApplicationController
         @employee = Employee.find_by_slug(params[:slug])
         params["employee"]["manager"] = Manager.find_by_slug(params["employee"]["manager"])
         @employee.update(params["employee"])
-        @employee.save
 
         redirect "/employees/#{@employee.slug}"
     end
@@ -103,7 +103,7 @@ class EmployeeController < ApplicationController
                 redirect '/'
             end
         end
-        flash[:message] = "Looks like you don't have permission to delete this employee!"
+        flash[:message] = "Looks like you don't have permission to delete this employee! Nice try!"
         redirect "/employees/#{@employee.slug}"
     end
 

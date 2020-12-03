@@ -36,6 +36,7 @@ class ManagerController < ApplicationController
         if !manager_logged_in?
             erb :'managers/login'
         elsif manager_logged_in?
+            flash[:message] = "You're already logged in!"
             redirect '/managers'
         end
     end
